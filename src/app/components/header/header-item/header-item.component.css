@@ -1,0 +1,12 @@
+.navbar-item {
+    color: var(--text-secondary-color);
+    text-decoration: none;
+}
+
+.navbar-item.active {
+    border-bottom: 2px solid var(--text-primary-color);
+}
+
+.navbar-item:hover {
+    cursor: pointer;
+}

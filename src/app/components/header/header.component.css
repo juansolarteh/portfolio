@@ -1,0 +1,48 @@
+#header-container {
+    background-color: var(--header-color);
+    padding: 1em 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+    overflow-x: auto;
+    /* Permite desplazamiento horizontal en pantallas pequeñas */
+    white-space: nowrap;
+    /* Evita que el texto se ajuste en varias líneas */
+}
+
+.navbar-brand .brand-logo {
+    font-size: 1.5em;
+    color: var(--text-primary-color);
+    text-decoration: none;
+    font-family: "Bungee", sans-serif;
+    margin-right: 1em;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        display: none;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1em;
+        overflow-x: auto;
+        /* Permite desplazamiento horizontal en pantallas pequeñas */
+        white-space: nowrap;
+        /* Evita que el texto se ajuste en varias líneas */
+    }
+}

@@ -1,0 +1,98 @@
+custom-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#home-section {
+    background-image: var(--background-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#face-img {
+    width: 17rem;
+    height: 17rem;
+    border-radius: 50%;
+    border: solid 0.5rem var(--principal-color);
+    position: relative;
+    box-shadow: 0 0 0 0.8rem rgba(30, 174, 145, 0.3); /* Añade un borde negro más delgado */
+}
+
+#banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    background: linear-gradient(to top, var(--banner-color) 0%, rgba(206, 0, 0, 0) 70%);
+}
+
+#banner h1{
+    margin-top: 1em;
+    margin-bottom: 0;
+    font-size: 1.5em;
+    text-decoration: none;
+    font-family: "Bungee", sans-serif;
+}
+
+#banner h2{
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+#links-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    width: 100%;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+}
+
+.icon-home {
+    width: 3rem;
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--principal-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.floating-button:hover {
+    background-color: var(--principal-color-hover);
+}
+
+@media (max-width: 768px) {
+    #face-img{
+        width: 12rem;
+        height: 12rem;
+    }
+}

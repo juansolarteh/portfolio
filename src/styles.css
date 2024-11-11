@@ -1,0 +1,36 @@
+:root {
+  --green-color: #1eae91;
+  --green-color-hover: #189279;
+  --white-color: #ffffff;
+  --black-color: black;
+  --light-color-banner: #e2e2e2;
+
+  --header-color: var(--green-color);
+  --background-color: var(--white-color);
+  --text-primary-color: var(--white-color);
+  --text-secondary-color: var(--white-color);
+  --text-terciary-color: var(--black-color);
+  --principal-color: var(--green-color);
+  --principal-color-hover: var(--green-color-hover);
+  --banner-color: var(--light-color-banner);
+
+  --background-image: url('../public/images/background-home-light.png');
+}
+
+.dark-mode {
+  --header-color: var(--black-color);
+  --background-color: var(--black-color);
+  --text-primary-color: var(--green-color);
+  --text-secondary-color: var(--white-color);
+  --text-terciary-color: var(--white-color);
+  --banner-color: var(--black-color);
+  --background-image: url('../public/images/background-home-dark.png');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: var(--text-terciary-color);
+}

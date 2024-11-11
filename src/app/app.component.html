@@ -1,0 +1,45 @@
+<custom-header [activeItemIndex]="shownSection" (changeItem)="scrollToSection($event)">
+    <header-item>HOME</header-item>
+    <header-item>ABOUT</header-item>
+    <header-item>SKILLS</header-item>
+    <header-item>PROJECTS</header-item>
+</custom-header>
+<div id="body-container">
+    <div id="home-section" class="section">
+        <div id="banner">
+            <img id="face-img" src="images/face.jpg">
+            <h1>JUAN PABLO SOLARTE</h1>
+            <h2>Systems Engineer</h2>
+            <div id="links-container">
+                <div class="icon-container">
+                    <img class="icon-home" src="icons/linkedin_icon.svg">
+                </div>
+                <div class="icon-container">
+                    @if (!isDarkMode) {
+                    <img class="icon-home" src="icons/github_light_icon.svg">
+                    }
+                    @else {
+                    <img class="icon-home" src="icons/github_dark_icon.svg">
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="about-section" class="section">
+        <div style="background-color: blue;">asd</div>
+    </div>
+    <div id="skills-section" class="section">
+        <div style="background-color: green;">asd</div>
+    </div>
+    <div id="projects-section" class="section">
+        <div style="background-color: red;">asd</div>
+    </div>
+</div>
+<button class="floating-button" (click)="toggleTheme()">
+    @if (!isDarkMode) {
+    <img src="icons/dark_mode_icon.svg">
+    }
+    @else {
+    <img src="icons/light_mode_icon.svg">
+    }
+</button>
