@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderItemComponent } from './components/header/header-item/header-item.component';
 import { isPlatformBrowser } from '@angular/common';
@@ -13,6 +13,8 @@ import { isPlatformBrowser } from '@angular/common';
 export class AppComponent implements OnInit, AfterViewInit {
   shownSection = 0;
   isDarkMode!: boolean;
+  private isAutomaticScroll = false;
+  private scrollTimeout: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
@@ -38,6 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   scrollToSection(index: number) {
+    this.isAutomaticScroll = true;
     this.shownSection = index;
     let sectionId = '';
     switch (index) {
@@ -57,6 +60,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
+      this.detectScrollEnd();
     }
   }
 
@@ -69,6 +73,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     };
 
     const observer = new IntersectionObserver((entries) => {
+      if (this.isAutomaticScroll) return
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const sectionId = entry.target.id;
@@ -97,5 +102,28 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private isBrowser(): boolean {
     return isPlatformBrowser(this.platformId);
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+    }
+    this.scrollTimeout = setTimeout(() => {
+      this.onScrollEnd();
+    }, 150); // Ajusta el tiempo según sea necesario
+  }
+
+  private detectScrollEnd() {
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+    }
+    this.scrollTimeout = setTimeout(() => {
+      this.onScrollEnd();
+    }, 150);
+  }
+
+  private onScrollEnd() {
+    this.isAutomaticScroll = false;
   }
 }

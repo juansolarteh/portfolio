@@ -1,9 +1,9 @@
 :root {
   --green-color: #1eae91;
   --green-color-hover: #189279;
-  --white-color: #ffffff;
+  --white-color: #e2e2e2;
   --black-color: black;
-  --light-color-banner: #e2e2e2;
+  --soft-black-color: rgb(30, 30, 30);
 
   --header-color: var(--green-color);
   --background-color: var(--white-color);
@@ -12,18 +12,18 @@
   --text-terciary-color: var(--black-color);
   --principal-color: var(--green-color);
   --principal-color-hover: var(--green-color-hover);
-  --banner-color: var(--light-color-banner);
+  --banner-color: var(--white-color);
 
   --background-image: url('../public/images/background-home-light.png');
 }
 
 .dark-mode {
   --header-color: var(--black-color);
-  --background-color: var(--black-color);
+  --background-color: var(--soft-black-color);
   --text-primary-color: var(--green-color);
   --text-secondary-color: var(--white-color);
   --text-terciary-color: var(--white-color);
-  --banner-color: var(--black-color);
+  --banner-color: var(--soft-black-color);
   --background-image: url('../public/images/background-home-dark.png');
 }
 
