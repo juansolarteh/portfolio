@@ -40,7 +40,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   scrollToSection(index: number) {
-    this.isAutomaticScroll = true;
     this.shownSection = index;
     let sectionId = '';
     switch (index) {
@@ -59,6 +58,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     const section = document.getElementById(sectionId);
     if (section) {
+      this.isAutomaticScroll = true;
       section.scrollIntoView({ behavior: 'smooth' });
       this.detectScrollEnd();
     }
