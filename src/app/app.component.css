@@ -22,56 +22,93 @@ custom-header {
     background-repeat: no-repeat;
 }
 
-#face-img {
-    width: 17rem;
-    height: 17rem;
-    border-radius: 50%;
-    border: solid 0.5rem var(--principal-color);
-    position: relative;
-    box-shadow: 0 0 0 0.8rem rgba(30, 174, 145, 0.3); /* Añade un borde negro más delgado */
+#about-section {
+    background-color: var(--background-color-secondary);
 }
 
-#banner {
+#work-experience-section {
+    background-color: var(--background-color);
+}
+
+#skills-section {
+    background-color: var(--background-color-secondary);
+}
+
+#projects-section {
+    background-color: var(--background-color);
+}
+
+.floating-section {
+    position: fixed;
+    bottom: 25px;
+    left: 15px;
     display: flex;
-    flex-direction: column;
+    /* Añadir flex para que el contenedor maneje los elementos correctamente */
+    justify-content: flex-start;
+    /* Alinea los elementos de izquierda a derecha */
     align-items: center;
-    padding: 2em;
-    background: linear-gradient(to top, var(--banner-color) 0%, rgba(206, 0, 0, 0) 70%);
-    border-radius: 10%;
+    /* Centra los elementos verticalmente */
 }
 
-#banner-name{
-    margin-top: 1em;
-    margin-bottom: 0;
-    font-size: 1.5em;
-    text-decoration: none;
-    font-family: "Bungee", sans-serif;
-}
-
-#banner-profession{
-    margin-top: 0;
-    font-size: 1.2em;
-}
-
-#links-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    width: 100%;
-}
-
-.icon-container {
+#email-container {
+    border: solid 2px var(--principal-color);
+    box-shadow: 0 0 6px 0px black;
+    padding: 0.3em;
+    padding-right: 5em;
+    max-height: 2.1em;
+    border-radius: 3px;
+    background-color: var(--background-color-secondary);
+    flex-grow: 1;
+    /* Esto hace que el contenedor de correo ocupe el espacio disponible */
     display: flex;
-    justify-content: center;
+    align-items: center;
+    /* Alinea el contenido del contenedor verticalmente */
+    font-size: 1.2em;
+    /* Ajusta el tamaño de la fuente si es necesario */
 }
 
-.icon-home {
-    width: 3rem;
+.email-button {
+    box-shadow: 0 0 6px 0px black;
+    margin-left: 2px;
+    background-color: var(--principal-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 100%;
+    /* Esto hace que el botón ocupe el 100% de la altura de su contenedor */
+    padding: 0.5em;
+    /* Ajusta el padding si es necesario */
+    width: 2.3em;
+    /* Ajusta el ancho del botón */
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 125%;
+    /* arriba del botón */
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.email-button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
 }
 
 .floating-button {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 15px;
     width: 50px;
     height: 50px;
     background-color: var(--principal-color);
@@ -87,13 +124,17 @@ custom-header {
     transition: background-color 0.3s ease;
 }
 
-.floating-button:hover {
+button:hover {
     background-color: var(--principal-color-hover);
 }
 
 @media (max-width: 768px) {
-    #face-img{
+    #face-img {
         width: 12rem;
         height: 12rem;
+    }
+
+    #email-container {
+        padding: 0.3em;
     }
 }

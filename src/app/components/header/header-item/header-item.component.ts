@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'header-item',
@@ -9,9 +9,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class HeaderItemComponent {
   @Input() isActive = false;
-  @Output() itemClicked = new EventEmitter<void>();
+  @Input() sectionElement: HTMLDivElement | null = null;
+  @Output() itemClicked = new EventEmitter<HTMLDivElement | null>();
+
+  constructor(public elementRef: ElementRef) {}
 
   handleOnClick() {
-    this.itemClicked.emit();
+    this.itemClicked.emit(this.sectionElement);
   }
 }

@@ -1,0 +1,37 @@
+#face-img {
+    width: 17rem;
+    height: 17rem;
+    border-radius: 50%;
+    border: solid 0.5rem var(--principal-color);
+    position: relative;
+    box-shadow: 0 0 0 0.8rem rgba(30, 174, 145, 0.3); /* Añade un borde negro más delgado */
+}
+
+#banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    background: linear-gradient(to top, var(--banner-color) 0%, rgba(206, 0, 0, 0) 70%);
+    border-radius: 10%;
+}
+
+#banner-name{
+    margin-top: 1em;
+    margin-bottom: 0;
+    text-decoration: none;
+}
+
+#banner-profession{
+    margin-top: 0;
+}
+
+#links-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    width: 100%;
+}
+
+.icon-home {
+    width: 3rem;
+}

@@ -3,34 +3,67 @@
   --green-color-hover: #189279;
   --white-color: #e2e2e2;
   --black-color: black;
-  --soft-black-color: rgb(30, 30, 30);
+  --soft-black-color-1: #252a30;
+  --soft-black-color-2: #1f2326;
+  --soft-white-color:#d5d5d5;
 
   --header-color: var(--green-color);
   --background-color: var(--white-color);
+  --background-color-secondary: var(--soft-white-color);
   --text-primary-color: var(--white-color);
   --text-secondary-color: var(--white-color);
   --text-terciary-color: var(--black-color);
   --principal-color: var(--green-color);
   --principal-color-hover: var(--green-color-hover);
   --banner-color: var(--white-color);
+  --span-color: var(--green-color);
+  --icon-container-color: var(--soft-white-color);
 
   --background-image: url('../public/images/background-home-light.png');
 }
 
 .dark-mode {
   --header-color: var(--black-color);
-  --background-color: var(--soft-black-color);
+  --background-color: var(--soft-black-color-1);
+  --background-color-secondary: var(--soft-black-color-2);
   --text-primary-color: var(--green-color);
   --text-secondary-color: var(--white-color);
   --text-terciary-color: var(--white-color);
-  --banner-color: var(--soft-black-color);
+  --banner-color: var(--soft-black-color-1);
+  --icon-container-color: var(--soft-black-color-2);
   --background-image: url('../public/images/background-home-dark.png');
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: var(--text-terciary-color);
+}
+
+h1 {
+  font-size: 1.5em;
+  font-family: "Bungee", sans-serif;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.4em;
+  font-family: "Bungee", sans-serif;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.4em;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+.center-content-h {
+  display: flex;
+  justify-content: center;
 }

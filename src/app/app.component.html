@@ -1,43 +1,39 @@
-<custom-header [activeItemIndex]="shownSection" (changeItem)="scrollToSection($event)">
-    <header-item>HOME</header-item>
-    <header-item>ABOUT</header-item>
-    <header-item>SKILLS</header-item>
-    <header-item>PROJECTS</header-item>
+<custom-header [autoScrollSections]="true">
+    <header-item [sectionElement]="homeSection">HOME</header-item>
+    <header-item [sectionElement]="aboutSection">ABOUT</header-item>
+    <header-item [sectionElement]="worExperienceSection" class="mobile-tab">WORK EXPERIENCE</header-item>
+    <header-item [sectionElement]="skillsSection">SKILLS</header-item>
+    <header-item [sectionElement]="projectsSection">PROJECTS</header-item>
 </custom-header>
 <div id="body-container">
-    <div id="home-section" class="section">
-        <div id="banner">
-            <img id="face-img" src="images/face.jpg">
-            <p id="banner-name">JUAN PABLO SOLARTE</p>
-            <p id="banner-profession">Systems Engineer</p>
-            <div id="links-container">
-                <div class="icon-container">
-                    <a href="https://www.linkedin.com/in/juan-pablo-solarte-hoyos-884451235/" target="_blank">
-                        <img class="icon-home" src="icons/linkedin_icon.svg">
-                    </a>
-                </div>
-                <div class="icon-container">
-                    <a href="https://github.com/juansolarteh" target="_blank">
-                        @if (!isDarkMode) {
-                        <img class="icon-home" src="icons/github_light_icon.svg">
-                        }
-                        @else {
-                        <img class="icon-home" src="icons/github_dark_icon.svg">
-                        }
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div #homeSection id="home-section" class="section">
+        <home-section [isDarkMode]="isDarkMode"></home-section>
     </div>
-    <div id="about-section" class="section">
-        <div style="background-color: blue;">asd</div>
+    <div #aboutSection id="about-section" class="section">
+        <about-section></about-section>
     </div>
-    <div id="skills-section" class="section">
+    <div #worExperienceSection id="work-experience-section" class="section">
         <div style="background-color: green;">asd</div>
     </div>
-    <div id="projects-section" class="section">
+    <div #skillsSection id="skills-section" class="section">
+        <div style="background-color: green;">asd</div>
+    </div>
+    <div #projectsSection id="projects-section" class="section">
         <div style="background-color: red;">asd</div>
     </div>
+</div>
+<div class="floating-section">
+    <div id="email-container">
+        {{email}}
+    </div>
+    <button class="email-button" (click)="copyEmail()">
+        <img src="icons/clone-solid.svg">
+        <span class="tooltip">Copy</span>
+    </button>
+    <button class="email-button" (click)="sendMessage()">
+        <img src="icons/envelope-solid.svg">
+        <span class="tooltip">Send email</span>
+    </button>
 </div>
 <button class="floating-button" (click)="toggleTheme()">
     @if (!isDarkMode) {

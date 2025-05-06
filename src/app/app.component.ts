@@ -1,36 +1,34 @@
-import { AfterViewInit, Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderItemComponent } from './components/header/header-item/header-item.component';
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { HomeComponent } from "./components/sections/home/home.component";
+import { AboutComponent } from "./components/sections/about/about.component";
+import { ResponsiveService } from './services/responsive.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, HeaderItemComponent],
+  imports: [HeaderComponent, HeaderItemComponent, HomeComponent, AboutComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   shownSection = 0;
   isDarkMode!: boolean;
-  private isAutomaticScroll = false;
-  private scrollTimeout: any;
+  isMobile!: boolean;
+  email = "juanpablosh@unicauca.edu.co";
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private responsiveSvc: ResponsiveService) { }
 
   ngOnInit(): void {
-    if (this.isBrowser()) {
+    if (isPlatformBrowser(this.platformId)) {
       this.isDarkMode = document.body.classList.contains('dark-mode');
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
         document.body.classList.toggle('dark-mode', event.matches);
         this.isDarkMode = event.matches;
       });
-    }
-  }
-
-  ngAfterViewInit(): void {
-    if (this.isBrowser()) {
-      this.setupIntersectionObserver();
+      this.responsiveSvc.isMobile$.subscribe(isMobile => this.isMobile = isMobile)
     }
   }
 
@@ -39,91 +37,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     document.body.classList.toggle('dark-mode', this.isDarkMode);
   }
 
-  scrollToSection(index: number) {
-    this.shownSection = index;
-    let sectionId = '';
-    switch (index) {
-      case 0:
-        sectionId = 'home-section';
-        break;
-      case 1:
-        sectionId = 'about-section';
-        break;
-      case 2:
-        sectionId = 'skills-section';
-        break;
-      case 3:
-        sectionId = 'projects-section';
-        break;
-    }
-    const section = document.getElementById(sectionId);
-    if (section) {
-      this.isAutomaticScroll = true;
-      section.scrollIntoView({ behavior: 'smooth' });
-      this.detectScrollEnd();
-    }
+  copyEmail() {
+    navigator.clipboard.writeText(this.email);
   }
 
-  private setupIntersectionObserver() {
-    const sections = document.querySelectorAll('.section');
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      if (this.isAutomaticScroll) return
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-          switch (sectionId) {
-            case 'home-section':
-              this.shownSection = 0;
-              break;
-            case 'about-section':
-              this.shownSection = 1;
-              break;
-            case 'skills-section':
-              this.shownSection = 2;
-              break;
-            case 'projects-section':
-              this.shownSection = 3;
-              break;
-          }
-        }
-      });
-    }, options);
-
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  }
-
-  private isBrowser(): boolean {
-    return isPlatformBrowser(this.platformId);
-  }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    if (this.scrollTimeout) {
-      clearTimeout(this.scrollTimeout);
-    }
-    this.scrollTimeout = setTimeout(() => {
-      this.onScrollEnd();
-    }, 150); // Ajusta el tiempo según sea necesario
-  }
-
-  private detectScrollEnd() {
-    if (this.scrollTimeout) {
-      clearTimeout(this.scrollTimeout);
-    }
-    this.scrollTimeout = setTimeout(() => {
-      this.onScrollEnd();
-    }, 150);
-  }
-
-  private onScrollEnd() {
-    this.isAutomaticScroll = false;
+  sendMessage() {
+    const email = this.email;
+    const subject = encodeURIComponent('Hello');
+    const body = encodeURIComponent('I saw your portfolio and...');
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   }
 }
